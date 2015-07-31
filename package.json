@@ -1,0 +1,38 @@
+{
+  "name": "spawn-pouchdb-server",
+  "description": "Configurable per-app pouchdb-server as a drop-in replacement for CouchDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && npm run test:node | tap-spec",
+    "test:node": "node tests",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gr2m/spawn-pouchdb-server.git"
+  },
+  "keywords": [
+    "couchdb",
+    "pouchdb"
+  ],
+  "author": "Gregor Martynus <gregor@martynus.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gr2m/spawn-pouchdb-server/issues"
+  },
+  "homepage": "https://github.com/gr2m/spawn-pouchdb-server#readme",
+  "dependencies": {
+    "12factor-config": "^1.0.1",
+    "cross-spawn": "^2.0.0",
+    "lodash.merge": "^3.3.2",
+    "mkdirp": "^0.5.1",
+    "pouchdb-server": "^0.6.6"
+  },
+  "devDependencies": {
+    "rimraf": "^2.4.2",
+    "semantic-release": "^4.0.1",
+    "standard": "^4.5.4",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.1"
+  }
+}
