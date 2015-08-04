@@ -1,31 +1,43 @@
 module.exports = spawnPouchdbServer
 
+var async = require('async')
 var path = require('path')
 var spawn = require('cross-spawn')
-var merge = require('lodash.merge')
 
 var assureConfigFile = require('./lib/assure-config-file')
-var defaults = require('./lib/defaults')
+var assureDatabaseDir = require('./lib/assure-database-dir')
+var getDefaults = require('./lib/get-defaults')
 
 function spawnPouchdbServer (options, callback) {
   if (typeof options === 'function') {
     callback = options
     options = {}
   }
+  options = getDefaults(options)
 
-  var config = merge({}, options, defaults)
-  var port = config.port
-  var dataPath = config.databaseDir
-
-  config.configFilePath = path.resolve(dataPath, 'config.json')
-
-  assureConfigFile(config, function (error) {
+  async.waterfall([
+    assureDatabaseDir.bind(null, options),
+    assureConfigFile.bind(null, options)
+  ], function (error) {
     if (error) return callback(error)
 
     var pouchDbBinPath = path.resolve(__dirname, './node_modules/.bin/pouchdb-server')
-    var pouchDbServer = spawn(pouchDbBinPath, ['-p', port, '-d', dataPath, '-c', config.configFilePath])
+    var pouchDbServerArgs = ['--config', options.config.file]
+    if (options.backend === false) {
+      pouchDbServerArgs.push('--in-memory')
+    } else {
+      if (options.backend.name) {
+        pouchDbServerArgs.push('--level-backend', options.backend.name)
+      }
+      if (options.backend.location) {
+        pouchDbServerArgs.push('--level-prefix', options.backend.location)
+      }
+    }
 
-    pouchDbServer.config = config
+    console.log('starting pouchdb-server %s', pouchDbServerArgs.join(' '))
+    var pouchDbServer = spawn(pouchDbBinPath, pouchDbServerArgs)
+    pouchDbServer.backend = options.backend
+    pouchDbServer.config = options.config
 
     // Stop main process when PouchDB Server dies.
     pouchDbServer.on('exit', function (code) {
