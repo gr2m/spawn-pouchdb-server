@@ -11,7 +11,7 @@
 1. Simplify development setup
 
    CouchDB is a fantastic database, but setting it up for local development is not easy, as it also
-   requires an Erland runtime envirnment. Having a built-in PouchDB-Server in our apps will make
+   requires an Erlang runtime environment. Having a built-in PouchDB-Server in our apps will make
    CouchDB optional.
 
 2. Isolated CouchDB configurations
