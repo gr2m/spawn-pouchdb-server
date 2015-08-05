@@ -1,7 +1,7 @@
 module.exports = spawnPouchdbServer
 
 var async = require('async')
-var path = require('path')
+var relative = require('require-relative')
 var spawn = require('cross-spawn')
 
 var assureConfigFile = require('./lib/assure-config-file')
@@ -21,7 +21,18 @@ function spawnPouchdbServer (options, callback) {
   ], function (error) {
     if (error) return callback(error)
 
-    var pouchDbBinPath = path.resolve(__dirname, './node_modules/.bin/pouchdb-server')
+    var relativePouchDbBinPath = 'pouchdb-server/bin/pouchdb-server'
+    var pouchDbBinPath
+    try {
+      pouchDbBinPath = relative.resolve(relativePouchDbBinPath, process.cwd())
+    } catch (error) {
+      if (error.code === 'MODULE_NOT_FOUND') {
+        pouchDbBinPath = require.resolve(relativePouchDbBinPath)
+      } else {
+        return callback(error)
+      }
+    }
+
     var pouchDbServerArgs = ['--config', options.config.file]
     if (options.backend === false) {
       pouchDbServerArgs.push('--in-memory')
