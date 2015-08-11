@@ -4,6 +4,7 @@
 
 [![NPM version](https://badge.fury.io/js/spawn-pouchdb-server.svg)](https://www.npmjs.com/package/spawn-pouchdb-server)
 [![Build Status](https://travis-ci.org/gr2m/spawn-pouchdb-server.svg?branch=master)](https://travis-ci.org/gr2m/spawn-pouchdb-server)
+[![Coverage Status](https://coveralls.io/repos/gr2m/spawn-pouchdb-server/badge.svg?branch=master)](https://coveralls.io/r/gr2m/spawn-pouchdb-server?branch=master)
 [![Dependency Status](https://david-dm.org/gr2m/spawn-pouchdb-server.svg)](https://david-dm.org/gr2m/spawn-pouchdb-server)
 
 ## Motivation
