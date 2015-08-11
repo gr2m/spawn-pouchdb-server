@@ -4,7 +4,7 @@ var fork = require('child_process').fork
 var cleanup = require('./cleanup')
 
 function runExample (example, t) {
-  var child = fork('./tests/examples/' + example)
+  var child = fork('./test/examples/' + example)
   var pid
   var config
 
