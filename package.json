@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "standard && npm run test:node | tap-spec",
-    "test:node": "node tests",
+    "test:node": "node test",
+    "test:coverage": "nyc node test",
+    "test:coverage:upload": "nyc report --reporter=text-lcov | coveralls",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -27,11 +29,13 @@
     "deep-property": "^1.1.0",
     "lodash.merge": "^3.3.2",
     "mkdirp": "^0.5.1",
+    "nyc": "^3.1.0",
     "pouchdb-server": "^0.6.6",
     "require-relative": "^0.8.7",
     "tmp": "0.0.26"
   },
   "devDependencies": {
+    "coveralls": "^2.11.3",
     "jsondown": "^0.1.1",
     "request": "^2.60.0",
     "rimraf": "^2.4.2",
