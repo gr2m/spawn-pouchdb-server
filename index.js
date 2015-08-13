@@ -48,7 +48,7 @@ function spawnPouchdbServer (options, callback) {
       }
     }
 
-    console.log('starting pouchdb-server %s', pouchDbServerArgs.join(' '))
+    if (options.verbose) console.log('starting pouchdb-server %s', pouchDbServerArgs.join(' '))
 
     var startlog = tmp.tmpNameSync()
 
