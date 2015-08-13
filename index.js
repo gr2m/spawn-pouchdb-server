@@ -1,8 +1,11 @@
 module.exports = spawnPouchdbServer
 
+var fs = require('fs')
+
 var async = require('async')
 var relative = require('require-relative')
 var spawn = require('cross-spawn')
+var tmp = require('tmp')
 
 var assureConfigFile = require('./lib/assure-config-file')
 var assureDatabaseDir = require('./lib/assure-database-dir')
@@ -46,7 +49,26 @@ function spawnPouchdbServer (options, callback) {
     }
 
     console.log('starting pouchdb-server %s', pouchDbServerArgs.join(' '))
-    var pouchDbServer = spawn(pouchDbBinPath, pouchDbServerArgs)
+
+    var startlog = tmp.tmpNameSync()
+
+    var pouchDbServer = spawn(pouchDbBinPath, pouchDbServerArgs, {
+      stdio: ['ignore', fs.openSync(startlog, 'w+'), process.stderr]
+    })
+
+    fs.watchFile(startlog, {
+      interval: 100
+    }, function watch () {
+      var log = fs.readFileSync(startlog, {
+        encoding: 'utf8'
+      })
+
+      if (/navigate to .* for the Fauxton UI/.test(log)) {
+        callback(null, pouchDbServer)
+        fs.unwatchFile(startlog, watch)
+      }
+    })
+
     pouchDbServer.backend = options.backend
     pouchDbServer.config = options.config
 
@@ -58,12 +80,6 @@ function spawnPouchdbServer (options, callback) {
     // Kill PouchDB server when main process dies
     process.on('exit', function (code) {
       pouchDbServer.kill()
-    })
-
-    pouchDbServer.stdout.on('data', function (data) {
-      if (/navigate to .* for the Fauxton UI/.test(data)) {
-        callback(null, pouchDbServer)
-      }
     })
   })
 }
