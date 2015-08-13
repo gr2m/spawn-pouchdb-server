@@ -3,10 +3,10 @@
   "description": "Configurable per-app pouchdb-server as a drop-in replacement for CouchDB",
   "main": "index.js",
   "scripts": {
-    "test": "standard && npm run test:node | tap-spec",
-    "test:node": "node test",
-    "test:coverage": "nyc node test",
-    "test:coverage:upload": "nyc report --reporter=text-lcov | coveralls",
+    "test": "standard && nyc npm run -s test:node",
+    "test:node": "node test | tap-spec",
+    "test:coverage": "nyc report",
+    "test:coverage:upload": "npm run -s test:coverage -- --reporter=text-lcov | coveralls",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
