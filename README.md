@@ -3,9 +3,9 @@
 > Configurable per-app pouchdb-server as a drop-in replacement for CouchDB
 
 [![NPM version](https://badge.fury.io/js/spawn-pouchdb-server.svg)](https://www.npmjs.com/package/spawn-pouchdb-server)
-[![Build Status](https://travis-ci.org/gr2m/spawn-pouchdb-server.svg?branch=master)](https://travis-ci.org/gr2m/spawn-pouchdb-server)
-[![Coverage Status](https://coveralls.io/repos/gr2m/spawn-pouchdb-server/badge.svg?branch=master)](https://coveralls.io/r/gr2m/spawn-pouchdb-server?branch=master)
-[![Dependency Status](https://david-dm.org/gr2m/spawn-pouchdb-server.svg)](https://david-dm.org/gr2m/spawn-pouchdb-server)
+[![Build Status](https://travis-ci.org/hoodiehq/spawn-pouchdb-server.svg?branch=master)](https://travis-ci.org/hoodiehq/spawn-pouchdb-server)
+[![Coverage Status](https://coveralls.io/repos/hoodiehq/spawn-pouchdb-server/badge.svg?branch=master)](https://coveralls.io/r/hoodiehq/spawn-pouchdb-server?branch=master)
+[![Dependency Status](https://david-dm.org/hoodiehq/spawn-pouchdb-server.svg)](https://david-dm.org/hoodiehq/spawn-pouchdb-server)
 
 ## Motivation
 
@@ -119,7 +119,7 @@ spawnPouchdbServer({
 ## Local setup & tests
 
 ```bash
-git clone git@github.com:gr2m/spawn-pouchdb-server.git
+git clone git@github.com:hoodiehq/spawn-pouchdb-server.git
 cd spawn-pouchdb-server
 npm install
 npm test
