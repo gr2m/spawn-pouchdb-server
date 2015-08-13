@@ -56,9 +56,14 @@ function spawnPouchdbServer (options, callback) {
       stdio: ['ignore', fs.openSync(startlog, 'w+'), process.stderr]
     })
 
-    fs.watchFile(startlog, {
-      interval: 100
-    }, function watch () {
+    var timeout = setTimeout(function () {
+      fs.unwatchFile(startlog, watch)
+      callback(new Error('Timeout: PouchDB did not start after ' + options.timeout + 'ms.'))
+    }, options.timeout)
+
+    fs.watchFile(startlog, {interval: 100}, watch)
+
+    function watch () {
       var log = fs.readFileSync(startlog, {
         encoding: 'utf8'
       })
@@ -66,8 +71,9 @@ function spawnPouchdbServer (options, callback) {
       if (/navigate to .* for the Fauxton UI/.test(log)) {
         callback(null, pouchDbServer)
         fs.unwatchFile(startlog, watch)
+        clearTimeout(timeout)
       }
-    })
+    }
 
     pouchDbServer.backend = options.backend
     pouchDbServer.config = options.config
