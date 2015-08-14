@@ -43,7 +43,7 @@ spawnPouchdbServer({
   directory: './.db',
   backend: {
     name: 'leveldown',
-    dir: './.db'
+    location: './.db'
   },
   log: {
     file: './.db/pouch.log',
