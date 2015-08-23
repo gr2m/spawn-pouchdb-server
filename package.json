@@ -24,24 +24,24 @@
   },
   "homepage": "https://github.com/hoodiehq/spawn-pouchdb-server#readme",
   "dependencies": {
-    "async": "^1.4.0",
+    "async": "^1.4.2",
     "cross-spawn": "^2.0.0",
     "deep-property": "^1.1.0",
     "lodash.merge": "^3.3.2",
     "mkdirp": "^0.5.1",
     "nyc": "^3.1.0",
-    "pouchdb-server": "^0.6.6",
+    "pouchdb-server": "^0.8.0",
     "require-relative": "^0.8.7",
-    "tmp": "0.0.26"
+    "tmp": "0.0.27"
   },
   "devDependencies": {
-    "coveralls": "^2.11.3",
+    "coveralls": "^2.11.4",
     "jsondown": "^0.1.1",
-    "request": "^2.60.0",
+    "request": "^2.61.0",
     "rimraf": "^2.4.2",
-    "semantic-release": "^4.0.3",
-    "standard": "^4.5.4",
-    "tap-spec": "^4.0.2",
-    "tape": "^4.0.1"
+    "semantic-release": "^4.3.2",
+    "standard": "^5.1.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.0"
   }
 }
