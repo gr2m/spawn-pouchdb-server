@@ -30,7 +30,7 @@
     "lodash.merge": "^3.3.2",
     "mkdirp": "^0.5.1",
     "nyc": "^3.1.0",
-    "pouchdb-server": "^0.8.0",
+    "pouchdb-server": "^0.9.0",
     "require-relative": "^0.8.7",
     "tmp": "0.0.27"
   },
@@ -38,9 +38,9 @@
     "coveralls": "^2.11.4",
     "jsondown": "^0.1.1",
     "request": "^2.61.0",
-    "rimraf": "^2.4.2",
-    "semantic-release": "^4.3.2",
-    "standard": "^5.1.0",
+    "rimraf": "^2.4.3",
+    "semantic-release": "^4.3.4",
+    "standard": "^5.1.1",
     "tap-spec": "^4.1.0",
     "tape": "^4.2.0"
   }
