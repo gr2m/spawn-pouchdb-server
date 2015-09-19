@@ -51,7 +51,9 @@ spawnPouchdbServer({
   },
   config: {
     file: './.db/config.json'
-  }
+  },
+  timeout: 10000, // in ms
+  verbose: false
 }, function (error) {
   console.log('PouchDB Server stared at localhost:5985/_utils')
 })
@@ -112,6 +114,16 @@ spawnPouchdbServer({
       <th>config.*</th>
       <td>All the <a href="http://docs.couchdb.org/en/latest/config/index.html">CouchDB Configuration</a>, e.g. <code>config.admins = {"adminuser": "adminpass"}</code> to fix <a href="http://guide.couchdb.org/draft/security.html#party">admin party</a></td>
       <td></td>
+    </tr>
+    <tr>
+      <th>timeout</th>
+      <td>Time to connect to backend in milliseconds</td>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>verbose (true/false)</th>
+      <td>Log status information</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
