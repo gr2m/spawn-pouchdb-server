@@ -50,10 +50,10 @@ start({
         }
       })
     }],
-    logFileExists: [function (callback) {
+    logFileExists: [ function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db/pouch.log'), callback.bind(null, null))
     }],
-    configFileExists: [function (callback) {
+    configFileExists: [ function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db/config.json'), callback.bind(null, null))
     }]
   }, function (error, results) {

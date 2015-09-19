@@ -45,10 +45,10 @@ start({
     dbFileExists: ['createDb', function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db2/test-db'), callback.bind(null, null))
     }],
-    logFileExists: [function (callback) {
+    logFileExists: [ function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db2/foo.log'), callback.bind(null, null))
     }],
-    configFileExists: [function (callback) {
+    configFileExists: [ function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db2/foo.json'), callback.bind(null, null))
     }]
   }, function (error, results) {
