@@ -27,8 +27,11 @@
 // npm install --save spawn-pouchdb-server
 var spawnPouchdbServer = require('spawn-pouchdb-server')
 
-spawnPouchdbServer(function (error) {
+spawnPouchdbServer(function (error, server) {
   console.log('PouchDB Server stared at localhost:5985/_utils')
+  server.stop(function () {
+    console.log('PouchDB Server stopped')
+  })
 })
 ```
 
@@ -54,7 +57,7 @@ spawnPouchdbServer({
   },
   timeout: 10000, // in ms
   verbose: false
-}, function (error) {
+}, function (error, server) {
   console.log('PouchDB Server stared at localhost:5985/_utils')
 })
 ```

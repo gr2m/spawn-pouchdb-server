@@ -78,9 +78,17 @@ function spawnPouchdbServer (options, callback) {
     pouchDbServer.backend = options.backend
     pouchDbServer.config = options.config
 
+    var killMainProcessOnExit = true
+
+    pouchDbServer.stop = function (callback) {
+      killMainProcessOnExit = false
+      pouchDbServer.on('exit', callback)
+      pouchDbServer.kill()
+    }
+
     // Stop main process when PouchDB Server dies.
     pouchDbServer.on('exit', function (code) {
-      process.exit(code)
+      if (killMainProcessOnExit) process.exit(code)
     })
 
     // Kill PouchDB server when main process dies
