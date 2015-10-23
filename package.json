@@ -31,9 +31,9 @@
     "lodash.merge": "^3.3.2",
     "mkdirp": "^0.5.1",
     "nyc": "^3.2.2",
-    "pouchdb-server": "^0.9.0",
+    "pouchdb-server": "^1.0.0",
     "require-relative": "^0.8.7",
-    "tmp": "0.0.27"
+    "tmp": "0.0.28"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
