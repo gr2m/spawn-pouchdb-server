@@ -30,7 +30,7 @@
     "deep-property": "^1.1.0",
     "lodash.merge": "^3.3.2",
     "mkdirp": "^0.5.1",
-    "nyc": "^3.2.2",
+    "nyc": "^5.0.0",
     "pouchdb-server": "^1.0.0",
     "require-relative": "^0.8.7",
     "tmp": "0.0.28"
