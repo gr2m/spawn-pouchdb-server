@@ -1,7 +1,7 @@
 module.exports = spawnPouchdbServer
 
 var fs = require('fs')
-
+var http = require('http')
 var async = require('async')
 var relative = require('require-relative')
 var spawn = require('cross-spawn')
@@ -57,22 +57,27 @@ function spawnPouchdbServer (options, callback) {
     })
 
     var timeout = setTimeout(function () {
-      fs.unwatchFile(startlog, watch)
       callback(new Error('Timeout: PouchDB did not start after ' + options.timeout + 'ms.'))
     }, options.timeout)
 
-    fs.watchFile(startlog, {interval: 100}, watch)
+    var testForServerUp = setInterval(pingServer, 100)
+    var serverUp
 
-    function watch () {
-      var log = fs.readFileSync(startlog, {
-        encoding: 'utf8'
-      })
+    function pingServer () {
+      var port = options.config.httpd.port
+      var req = http.get('http://localhost:' + port, function () {
+        if (options.verbose) {
+          console.log('pouchdb-server up')
+        }
+        if (!serverUp) {
+          callback(null, pouchDbServer)
+        }
 
-      if (/navigate to .* for the Fauxton UI/.test(log)) {
-        callback(null, pouchDbServer)
-        fs.unwatchFile(startlog, watch)
+        serverUp = true
         clearTimeout(timeout)
-      }
+        clearInterval(testForServerUp)
+      })
+      req.on('error', function (err) { if (err) { return } })
     }
 
     pouchDbServer.backend = options.backend
