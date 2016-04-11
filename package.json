@@ -28,7 +28,7 @@
     "async": "^1.5.2",
     "cross-spawn": "^2.1.5",
     "deep-property": "^1.1.0",
-    "lodash": "^4.0.1",
+    "lodash": "^4.10.0",
     "mkdirp": "^0.5.1",
     "nyc": "^6.0.0",
     "pouchdb-server": "^1.0.1",
