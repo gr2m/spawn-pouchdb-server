@@ -26,7 +26,7 @@
   "homepage": "https://github.com/hoodiehq/spawn-pouchdb-server#readme",
   "dependencies": {
     "async": "^1.5.2",
-    "cross-spawn": "^3.0.0",
+    "cross-spawn": "^4.0.0",
     "deep-property": "^1.1.0",
     "lodash": "^4.0.1",
     "mkdirp": "^0.5.1",
