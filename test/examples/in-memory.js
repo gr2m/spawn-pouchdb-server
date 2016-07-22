@@ -38,15 +38,15 @@ start({
     createDb: function (callback) {
       request.put(testDbUrl, callback)
     },
-    dbFileExists: ['createDb', function (callback) {
+    dbFileExists: ['createDb', function (results, callback) {
       fs.exists(path.resolve(defaults.config.couchdb.database_dir, testDbName), callback.bind(null, null))
     }],
-    logFileExists: [ function (callback) {
+    logFileExists: function (callback) {
       fs.exists(defaults.config.log.file, callback.bind(null, null))
-    }],
-    configFileExists: [ function (callback) {
+    },
+    configFileExists: function (callback) {
       fs.exists(defaults.config.file, callback.bind(null, null))
-    }]
+    }
   }, function (error, results) {
     if (error) throw error
 

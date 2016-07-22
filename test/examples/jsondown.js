@@ -37,7 +37,7 @@ start({
     createDb: function (callback) {
       request.put('http://localhost:5985/test-db', callback)
     },
-    dbFileIsJson: ['createDb', function (callback) {
+    dbFileIsJson: ['createDb', function (results, callback) {
       fs.readFile(path.resolve(__dirname, '../../.db/test-db'), function (error, data) {
         if (error) return callback(null, false)
 
@@ -50,12 +50,12 @@ start({
         }
       })
     }],
-    logFileExists: [ function (callback) {
+    logFileExists: function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db/pouch.log'), callback.bind(null, null))
-    }],
-    configFileExists: [ function (callback) {
+    },
+    configFileExists: function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db/config.json'), callback.bind(null, null))
-    }]
+    }
   }, function (error, results) {
     if (error) throw error
 

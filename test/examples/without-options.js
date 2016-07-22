@@ -30,15 +30,15 @@ start(function (error, pouch) {
     createDb: function (callback) {
       request.put('http://localhost:5985/test-db', callback)
     },
-    dbFileExists: ['createDb', function (callback) {
+    dbFileExists: ['createDb', function (results, callback) {
       fs.exists(path.resolve(__dirname, '../../.db/test-db'), callback.bind(null, null))
     }],
-    logFileExists: [ function (callback) {
+    logFileExists: function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db/pouch.log'), callback.bind(null, null))
-    }],
-    configFileExists: [ function (callback) {
+    },
+    configFileExists: function (callback) {
       fs.exists(path.resolve(__dirname, '../../.db/config.json'), callback.bind(null, null))
-    }]
+    }
   }, function (error, results) {
     if (error) throw error
 
