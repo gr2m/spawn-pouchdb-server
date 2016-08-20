@@ -1,3 +1,10 @@
+# ⛔️ unmaintained ⛔️
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+I’m not using this module any longer and can therefore no longer maintain it.
+If you'd like to adopt this repo, please open a few PRs and I'll happily hand it over. :)
+
 # spawn-pouchdb-server
 
 > Configurable per-app pouchdb-server as a drop-in replacement for CouchDB
