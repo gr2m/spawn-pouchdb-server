@@ -1,16 +1,9 @@
-# ⛔️ unmaintained ⛔️
-
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
-
-I’m not using this module any longer and can therefore no longer maintain it.
-If you'd like to adopt this repo, please open a few PRs and I'll happily hand it over. :)
-
 # spawn-pouchdb-server
 
 > Configurable per-app pouchdb-server as a drop-in replacement for CouchDB
 
 [![NPM version](https://badge.fury.io/js/spawn-pouchdb-server.svg)](https://www.npmjs.com/package/spawn-pouchdb-server)
-[![Build Status](https://travis-ci.org/hoodiehq/spawn-pouchdb-server.svg?branch=master)](https://travis-ci.org/hoodiehq/spawn-pouchdb-server)
+[![Build Status](https://travis-ci.org/gr2m/spawn-pouchdb-server.svg?branch=master)](https://travis-ci.org/gr2m/spawn-pouchdb-server)
 [![Coverage Status](https://coveralls.io/repos/hoodiehq/spawn-pouchdb-server/badge.svg?branch=master)](https://coveralls.io/r/hoodiehq/spawn-pouchdb-server?branch=master)
 [![Dependency Status](https://david-dm.org/hoodiehq/spawn-pouchdb-server.svg)](https://david-dm.org/hoodiehq/spawn-pouchdb-server)
 
