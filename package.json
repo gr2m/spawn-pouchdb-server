@@ -33,7 +33,7 @@
     "nyc": "^8.1.0",
     "pouchdb-server": "^1.0.1",
     "require-relative": "^0.8.7",
-    "tmp": "0.0.28"
+    "tmp": "0.0.29"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
