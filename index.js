@@ -6,12 +6,14 @@ var async = require('async')
 var relative = require('require-relative')
 var spawn = require('cross-spawn')
 var tmp = require('tmp')
+var cloneDeep = require('lodash/cloneDeep')
 
 var assureConfigFile = require('./lib/assure-config-file')
 var assureDatabaseDir = require('./lib/assure-database-dir')
 var getDefaults = require('./lib/get-defaults')
 
-function spawnPouchdbServer (options, callback) {
+function spawnPouchdbServer (opts, callback) {
+  var options = cloneDeep(opts)
   if (typeof options === 'function') {
     callback = options
     options = {}
