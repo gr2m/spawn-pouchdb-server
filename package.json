@@ -31,7 +31,7 @@
     "lodash": "^4.0.1",
     "mkdirp": "^0.5.1",
     "nyc": "^8.1.0",
-    "pouchdb-server": "^1.0.1",
+    "pouchdb-server": "^2.3.7",
     "require-relative": "^0.8.7",
     "tmp": "0.0.29"
   },
